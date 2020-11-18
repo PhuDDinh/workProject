@@ -10,3 +10,10 @@ For now, we can work off the same branch.  As the project takes shape, we'll enf
 Begin with everything in root directory and in one file.  As the project grows, we can start creating project directory structure as needed and split out logic into different source files.
 
 Remember to write unit test to make sure your functions are doing what they're supposed to.
+
+# 11/17/2020 Project Notes
+Transfer CSV data into a Dictionary. Sales Order# will be keys, notes with dates will be the values.
+Find values with past dates, then return the keys attached.
+Spit out the Sales Order #s(keys) into another csv.
+
+
