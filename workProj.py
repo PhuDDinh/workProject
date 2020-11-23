@@ -30,21 +30,22 @@ if __name__ == "__main__":
 	fileLocalDir = os.path.dirname(__file__)
 	absoluteCsvFilePath = os.path.join(fileLocalDir, CSV_FILENAME)
 	#os.chdir("c:\\users\\pdinh\\python\\workproject") #for working in shell
-present = datetime.today()
-#Read the salesData.csv and turn the data into a Dict.
-myDict = {}
-with open("salesData.csv", newline="") as csvfile:
-	reader = csv.reader(csvfile)
-	for row in reader:
-		myDict[row[0]] = row[1]
 	
-datesDict = myDictRegex(myDict) #currently only matching the first date if there's multiple dates in the notes.
-listOfPastDates = compareDates(datesDict) #final list of all past due orders
+	present = datetime.today()
+	#Read the salesData.csv and turn the data into a Dict.
+	myDict = {}
+	with open("salesData.csv", newline="") as csvfile:
+		reader = csv.reader(csvfile)
+		for row in reader:
+			myDict[row[0]] = row[1]
+	
+	datesDict = myDictRegex(myDict) #currently only matching the first date if there's multiple dates in the notes.
+	listOfPastDates = compareDates(datesDict) #final list of all past due orders
 
-#Spit the final list into a new csv file called orders. 
-with open ("orders.csv", "w", newline="") as myFile:
-	wr = csv.writer(myFile)
-	wr.writerows([f] for f in listOfPastDates)
+	#Spit the final list into a new csv file called orders. 
+	with open ("orders.csv", "w", newline="") as myFile:
+		wr = csv.writer(myFile)
+		wr.writerows([f] for f in listOfPastDates)
 	
 
 
