@@ -44,7 +44,13 @@ def compareDates(dict):
 	return x
 #This should cover 99% of case. Required data of month/day only. 
 listOfPastDates = compareDates(datesDict) #final list of all past due orders
+
+
 #4th and last step. Spit the final list into a new csv file. 
+with open ("orders.csv", "w", newline="") as myFile:
+	wr = csv.writer(myFile)
+	wr.writerow(listOfPastDates)
+	
 
 
 
