@@ -34,14 +34,18 @@ present = datetime.today()
 def compareDates(dict):
 	x = []
 	for k, v in dict.items():
-		v += "/20" 
-		vDates = datetime.strptime(v, "%m/%d/%y")
-		if present > vDates:
-			x.append(k)
+		try:
+			v += "/20" 
+			vDates = datetime.strptime(v, "%m/%d/%y")
+			if present > vDates:
+				x.append(k)
+		except ValueError:
+			print("Notes value need to be in month/day format, without the year.")
 	return x
 #This should cover 99% of case. Required data of month/day only. 
 listOfPastDates = compareDates(datesDict) #final list of all past due orders
 #4th and last step. Spit the final list into a new csv file. 
+
 
 
 
