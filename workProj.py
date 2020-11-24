@@ -8,8 +8,8 @@ def myDictRegex(dict): # Use regex to return a new Dict with the same keys but t
 		try:
 			dates = dateRegex.search(v)
 			x[k] = dates.group()
-		except AttributeError:
-			x[k] = "11/23"
+		except AttributeError: #if input is blank, default date is 1/1, blank input will always need to be updated.
+			x[k] = "1/1"
 	return x
 def compareDates(dict): #Use dates lib to compare current date to datesDict's values. If the dates of datesDict is older than current date than append keys to a list.
 	x = []
