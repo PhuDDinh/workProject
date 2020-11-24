@@ -5,8 +5,11 @@ def myDictRegex(dict): # Use regex to return a new Dict with the same keys but t
 	x = {}
 	dateRegex = re.compile(r"\d{1,2}/\d{1,2}(/\d{1,4}){0,1}")
 	for k, v in dict.items():
-		dates = dateRegex.search(v)
-		x[k] = dates.group()
+		try:
+			dates = dateRegex.search(v)
+			x[k] = dates.group()
+		except AttributeError:
+			x[k] = "11/23"
 	return x
 def compareDates(dict): #Use dates lib to compare current date to datesDict's values. If the dates of datesDict is older than current date than append keys to a list.
 	x = []
@@ -17,7 +20,7 @@ def compareDates(dict): #Use dates lib to compare current date to datesDict's va
 			if present > vDates:
 				x.append(k)
 		except ValueError:
-			print("Notes value need to be in month/day format, without the year.")
+			print("k")
 	return x
 #This should cover 99% of case. Required data of month/day only. 
 
